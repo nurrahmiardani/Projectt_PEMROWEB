@@ -15,13 +15,14 @@ class Auth extends Controller
         $data = $_POST;
 
         
-        $credential = $this->model('User_model')->checkCredential($data['email']);
+        $credential = $this->model('User_model')->getCredential($data['email']);
         
 
         if ($credential['password'] == $data['password'])
         {
             $_SESSION['email'] = $data['email'];
-            
+            header("Location: " . BASEURL . "/home");
+            exit;
         } else {
             Flasher::setFlasH('Login', 'Gagal', 'danger');
             header("Location: " . BASEURL . "/auth");

@@ -23,12 +23,12 @@ class User_model
     {
         $query = "INSERT INTO users (name, password, email, address)
                     VALUES (
-                        :name, :email, :password, :address
+                        :name, :password, :email, :address
                     )";
         $this->db->query($query);
         $this->db->bind('name', $data['name']);
-        $this->db->bind('password', $data['password']);
         $this->db->bind('email', $data['email']);
+        $this->db->bind('password', $data['password']);
         $this->db->bind('address', $data['address']);
 
         $this->db->execute();
