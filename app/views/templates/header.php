@@ -29,7 +29,7 @@
                         <li class="nav-item"><a class="nav-link" href="#services">Benefits</a></li>
                         <li class="nav-item"><a class="nav-link" href="#portfolio">Desa</a></li>
                         <li class="nav-item"><a class="nav-link" href="#about">Tutorial</a></li>
-                        <li class="nav-item"><a class="nav-link" href="form tambah desa/tambah.html">Tambah Desa</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= BASEURL ?>/desa/showaddform">Tambah Desa</a></li>
                         <li class="nav-item"><a class="nav-link" href="<?= BASEURL ?>/auth/signupform">Daftar</a></li>
                         <?php if(isset($_SESSION['email'])): ?>
                             <li class="nav-item"><a class="nav-link" href="<?= BASEURL ?>/auth/logout">Logout</a></li>
