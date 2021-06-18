@@ -9,7 +9,13 @@
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Daftar Desa</h2>
                     <h3 class="section-subheading text-muted">Pilih Desa Sesuai Potensimu</h3>
-                    <a class="btn btn-primary btn-xl text-uppercase" href="#services">Cari Desa</a>
+                    <!-- <a class="btn btn-primary btn-xl text-uppercase" href="#services">Cari Desa</a> -->
+                    <form class="form" action="<?= BASEURL ?>/desa/cari" method="POST">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Nama desa yang ingin dicari" aria-label="Recipient's username" aria-describedby="button-addon2" name="keyword">
+                            <input class="btn btn-outline-secondary" type="submit" id="button-addon2" value="Cari">
+                        </div>
+                    </form>
                 </div><br><br><br>
                 <div class="row">
                     <?php foreach($data['villages'] as $key => $village): ?>

@@ -153,4 +153,13 @@ class Village_model
         
     }
 
+    public function getByTitle($keyword)
+    {
+        
+        $query = "SELECT * FROM $this->table WHERE nama LIKE :keyword";
+        $this->db->query($query);
+        $this->db->bind('keyword', "%$keyword%");
+        return $this->db->resultSet();
+    }
+
 }

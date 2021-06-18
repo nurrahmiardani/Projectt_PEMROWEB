@@ -59,4 +59,14 @@ class Desa extends Controller
             exit;
         }
     }
+
+    public function cari()
+    {
+        $data['judul'] = 'Lihat Desa';
+        $data['villages'] = $this->model('Village_model')->getByTitle($_POST['keyword']);
+
+        $this->view('templates/header', $data);
+        $this->view('desa/index', $data);
+        $this->view('templates/footer');
+    }
 }
