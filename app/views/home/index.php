@@ -1,7 +1,7 @@
 <!-- Masthead-->
 <header class="masthead">
             <div class="container">
-                <div class="masthead-subheading">Selamat Datang di Website Kami</div>
+                <div class="masthead-subheading">Selamat Datang di Volunteer Village</div>
                 <div class="masthead-heading">Senang Bisa Bertemu Kembali</div>
                 <a class="btn btn-primary btn-xl text-uppercase" href="#services">Cari Tahu Lebih Lanjut</a>
             </div>

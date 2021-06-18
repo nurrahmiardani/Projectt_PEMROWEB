@@ -36,4 +36,25 @@ class User_model
         return $this->db->rowCount();
     }
 
+    public function update($data)
+    {
+        $query = "UPDATE users SET
+                            name = :name,
+                            password = :password, 
+                            email = :email,
+                            address = :address
+                        WHERE id = :id
+                            ";
+        $this->db->query($query);
+        $this->db->bind('name', $data['name']);
+        $this->db->bind('email', $data['email']);
+        $this->db->bind('password', $data['password']);
+        $this->db->bind('address', $data['address']);
+        $this->db->bind('id', $data['id']);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
 }
