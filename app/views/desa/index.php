@@ -59,10 +59,10 @@
                                             <?= $village['nama_kepala_desa'] ?>
                                         </li>
                                     </ul>
-                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                    <a href="<?= BASEURL ?>/desa/showupdateform/<?= $village['id'] ?>" class="btn btn-primary btn-xl text-uppercase">
                                         <i class="fas fa-times me-1"></i>
                                         Ubah
-                                    </button>
+                                    </a>
                                     <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
                                         <i class="fas fa-times me-1"></i>
                                         Tutup

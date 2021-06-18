@@ -18,10 +18,6 @@ class Village_model
 
     public function add($data, $foto)
     {
-        // echo($foto['foto']['error']) == 0;
-        // echo getcwd();
-        // die();
-
         if ($foto['foto']['error'] == 0)
         {
             $query = "INSERT INTO villages (nama, provinsi, nama_kepala_desa, kabupaten, jumlah_penduduk, foto)
@@ -83,6 +79,78 @@ class Village_model
         unlink(getcwd() . "/images/foto-desa/" . $fileName);
 
         return $this->db->rowCount();
+    }
+
+    public function update($data, $foto)
+    {
+        
+        if ($foto['foto']['error'] == 0)
+        {
+            $query = "UPDATE $this->table SET
+                                nama = :nama,
+                                provinsi = :provinsi,
+                                nama_kepala_desa = :nama_kepala_desa,
+                                kabupaten = :kabupaten,
+                                jumlah_penduduk = :jumlah_penduduk
+                                where id = :id
+                        ";
+        } else {
+            $query = "UPDATE $this->table SET
+                                nama = :nama,
+                                provinsi = :provinsi,
+                                nama_kepala_desa = :nama_kepala_desa,
+                                kabupaten = :kabupaten,
+                                jumlah_penduduk = :jumlah_penduduk
+                                where id = :id
+                        ";
+        }
+
+        $this->db->query($query);
+             
+
+        if ($foto['foto']['error'] == 4)
+        {
+            $this->db->bind('nama', $data['nama']);
+            $this->db->bind('provinsi', $data['provinsi']);
+            $this->db->bind('nama_kepala_desa', $data['nama_kepala_desa']);
+            $this->db->bind('kabupaten', $data['kabupaten']);
+            $this->db->bind('jumlah_penduduk', $data['jumlah_penduduk']);
+            $this->db->bind('id', $data['id']);    
+        
+            $this->db->execute();
+
+            return $this->db->rowCount();
+        } else {
+            $id = (int)$data['id'];
+            $previousFileName = $this->getById($id)['foto'];
+                     
+            
+            
+            $fileName = $foto['foto']['name'];
+            $tempName = $foto['foto']['tmp_name'];
+        
+            
+            $this->db->bind('nama', $data['nama']);
+            $this->db->bind('provinsi', $data['provinsi']);
+            $this->db->bind('nama_kepala_desa', $data['nama_kepala_desa']);
+            $this->db->bind('kabupaten', $data['kabupaten']);
+            $this->db->bind('jumlah_penduduk', $data['jumlah_penduduk']);
+            $this->db->bind('id', $data['id']);    
+
+            $this->db->execute();
+            // tentukan lokasi file akan dipindahkan
+            $dirUpload = getcwd() .  "/images/foto-desa/";
+            
+            // pindahkan file
+            $uploaded = move_uploaded_file($tempName, $dirUpload.$fileName);
+
+            // unlink(getcwd() . "/images/foto-desa/" . $previousFileName);
+            
+            return $this->db->rowCount();
+
+        }
+
+        
     }
 
 }

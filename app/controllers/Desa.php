@@ -40,4 +40,23 @@ class Desa extends Controller
             exit;
         }
     }
+
+    public function showUpdateForm($id)
+    {
+        $data['judul'] = 'Update Desa';
+        $data['village'] = $this->model('Village_model')->getById($id);
+        $this->view('templates/header', $data);
+        $this->view('desa/update', $data);
+        $this->view('templates/footer');
+    }
+
+    public function update()
+    {
+        if ($this->model('Village_model')->update($_POST, $_FILES) > 0)
+        {
+            Flasher::setFlasH('Data Desa', 'Berhasil Diupdate', 'success');
+            header("Location: " . BASEURL . "/desa");
+            exit;
+        }
+    }
 }
